@@ -16,7 +16,7 @@ public class Homework1 {
 			System.out.println((int) ((Math.random() * 25) + 25));
 			System.out.println("A number between -10 and 15: ");
 			System.out.println((int) ((Math.random() * 25) - 10));
-			
+					
 	}
 
 }
