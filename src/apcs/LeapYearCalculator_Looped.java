@@ -13,9 +13,9 @@ public class LeapYearCalculator_Looped {
 		Scanner input = new Scanner(System.in);
 		String command;
 		int year;
-		System.out.print("Please enter a year: ");
+		System.out.println("Please enter a year: ");
 		while (true) {
-			System.out.print("$>");
+			System.out.print(":>");
 			command = input.nextLine();
 			if(command.equals("exit")){
 				break;
