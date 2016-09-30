@@ -12,16 +12,24 @@ public class DigitCalculator {
 		System.out.println("Please enter an Integer: ");
 		String value = input.nextLine();
 		int[] digits = new int[value.length()];
-		for(int i = 0; i < value.length(); i++){
+		int oddNumbers = 0;
+		int evenNumbers = 0;
+		int zeroNumbers = 0;
+		for (int i = 0; i < value.length(); i++) {
 			digits[i] = Character.getNumericValue(value.charAt(i));
-			if(digits[i] == 0){
+			if (digits[i] == 0) {
 				System.out.println("the digit " + digits[i] + " is zero.");
-			}else if(digits[i] % 2 == 0){
+				zeroNumbers++;
+			} else if (digits[i] % 2 == 0) {
 				System.out.println("the digit " + digits[i] + " is even.");
-			}else {
+				evenNumbers++;
+			} else {
 				System.out.println("the digit " + digits[i] + " is odd.");
+				oddNumbers++;
 			}
 		}
+		System.out.println("There are " + zeroNumbers + " zeros, " + evenNumbers + " even numbers, and " + oddNumbers
+				+ " odd numbers.");
 
 	}
 
