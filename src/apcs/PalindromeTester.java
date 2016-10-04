@@ -2,25 +2,38 @@ package apcs;
 
 import java.util.Scanner;
 
-public class PalindromeTester {
+public class PalindromeTester
+{
+   public static void main (String[] args)
+   {
+      String str, another = "y";
+      int left, right;
+      Scanner scan = new Scanner (System.in);
 
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Please input a palindrome: ");
-		String palindrome = input.nextLine();
-		char[] palArray;
-		int numOfLetters = 0;
-		palindrome = palindrome.toLowerCase();
-		for (int i = 0; i < palindrome.length(); i++)
-			if (palindrome.charAt(i) != ' ' && palindrome.charAt(i) != '.' && palindrome.charAt(i) != ',') 
-				numOfLetters++;
-		palArray = new char[numOfLetters];
-		for(int i = 0; i < numOfLetters; i++){
-			if (palindrome.charAt(i) != ' ' && palindrome.charAt(i) != '.' && palindrome.charAt(i) != ',')
-				palArray[i] = palindrome.charAt(i);
-		}
-		System.out.println(palArray.length);
-		System.out.println(new String(palArray));
-	}
+      while (another.equalsIgnoreCase("y")) // allows y or Y
+      {
+         System.out.println ("Enter a potential palindrome:");
+         str = scan.nextLine();
 
+         left = 0;
+         right = str.length() - 1;
+
+         while (str.charAt(left) == str.charAt(right) && left < right)
+         {
+            left++;
+            right--;
+         }
+
+         System.out.println();
+
+         if (left < right)
+            System.out.println ("That string is NOT a palindrome.");
+         else
+            System.out.println ("That string IS a palindrome.");
+
+         System.out.println();
+         System.out.print ("Test another palindrome (y/n)? ");
+         another = scan.nextLine();
+      }
+   }
 }
