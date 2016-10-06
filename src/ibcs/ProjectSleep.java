@@ -1,76 +1,47 @@
 package ibcs;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 public class ProjectSleep {
 
+	/**
+	 * @author Ryan McGee
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Please input your Birthday:");
 		System.out.print("\tMonth: ");
-		String month = input.nextLine();
+		int month = input.nextInt();
 		System.out.print("\tDay: ");
 		int day = input.nextInt();
 		System.out.print("\tYear: ");
 		int year = input.nextInt();
-		int yearsOld = 2016 - year;
-		String monthShort = month.substring(0, 3);
-		monthShort = monthShort.toLowerCase();
-		int monthNum = 0;
-
-		switch (monthShort) {
-		case "jan":
-			monthNum = 1;
-			break;
-		case "feb":
-			monthNum = 2;
-			break;
-		case "mar":
-			monthNum = 3;
-			break;
-		case "apr":
-			monthNum = 4;
-			break;
-		case "may":
-			monthNum = 5;
-			break;
-		case "jun":
-			monthNum = 6;
-			break;
-		case "jul":
-			monthNum = 7;
-			break;
-		case "aug":
-			monthNum = 8;
-			break;
-		case "sep":
-			monthNum = 9;
-			break;
-		case "oct":
-			monthNum = 10;
-			break;
-		case "nov":
-			monthNum = 11;
-			break;
-		case "dec":
-			monthNum = 12;
-			break;
-		default:
-			System.out.println("It didn't work!");
-		}
-		int[] birthDay = {monthNum, day, year};
-		
-		int[] currentDate = { 
-				Calendar.getInstance().get(Calendar.MONTH) - 1,
+		input.close();
+		int[] birthDay = { month, day, year };
+		// To get current date:
+		int[] currentDate = { Calendar.getInstance().get(Calendar.MONTH) + 1,
 				Calendar.getInstance().get(Calendar.DAY_OF_MONTH), 
 				Calendar.getInstance().get(Calendar.YEAR) };
 		
 		int[] difference = new int[3];
-		for(int i = 0; i < 3; i++){
-			
-		}
+		difference[2] = currentDate[2] - birthDay[2];
+		if (currentDate[0] < birthDay[0]) {
+			difference[2]--;
+			difference[0] = (currentDate[0] + 12) - birthDay[0];
+		} else
+			difference[0] = currentDate[0] - birthDay[0];
+		if (currentDate[1] < birthDay[1]) {
+			difference[0]--;
+			difference[1] = (currentDate[1] + 30) - birthDay[1];
+		} else
+			difference[1] = currentDate[1] - birthDay[1];
+		int daysAlive = difference[1] + (difference[0] * 30) + ((difference[2] * 12) * 30);
+		System.out.println("You have been alive for about " + daysAlive + " days.");
+		System.out.println("You have slept for about " + (daysAlive * 8) + " hours.");
+		
+		
 	}
 
 }
