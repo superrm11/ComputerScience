@@ -10,7 +10,7 @@ public class RadiusOfCircle {
 		double area = input.nextDouble();
 		double radius = Math.sqrt(area/Math.PI);
 		System.out.println("The radius is: " + radius);
-
+		input.close();
 	}
 
 }

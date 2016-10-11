@@ -42,7 +42,7 @@ public class PlanetWeight {
 			}
 		}
 		System.out.println("Your weight on " + planets[selection - 1] + " is " + weight);
-
+		input.close();
 	}
 
 }

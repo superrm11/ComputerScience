@@ -11,7 +11,7 @@ public class FullName {
 		System.out.println("What is your last name? ");
 		String lName = input.next();
 		System.out.println("Your full name is " + fName + " " + lName + ".");
-
+		input.close();
 	}
 
 }
