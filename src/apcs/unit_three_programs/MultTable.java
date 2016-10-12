@@ -1,4 +1,4 @@
-package apcs;
+package apcs.unit_three_programs;
 
 public class MultTable {
 

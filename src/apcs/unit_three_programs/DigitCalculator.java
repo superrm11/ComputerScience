@@ -1,4 +1,4 @@
-package apcs;
+package apcs.unit_three_programs;
 
 import java.util.Scanner;
 
@@ -28,6 +28,7 @@ public class DigitCalculator {
 				oddNumbers++;
 			}
 		}
+		input.close();
 		System.out.println("There are " + zeroNumbers + " zeros, " + evenNumbers + " even numbers, and " + oddNumbers
 				+ " odd numbers.");
 

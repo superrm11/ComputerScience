@@ -1,4 +1,4 @@
-package apcs;
+package apcs.unit_three_programs;
 
 import java.util.Scanner;
 
@@ -16,6 +16,7 @@ public class IntegerSum {
 		for(int i = 0; i <= num; i+=2){
 			constant+=i;
 		}
+		input.close();
 		System.out.println(constant);
 		
 		
