@@ -19,9 +19,12 @@ public class CentralTendency {
 			//makes the user add a minimum of 5 grades
 			if (enteredNum.equalsIgnoreCase("done") && numOfNums >= 5)
 				break;
-			else if(enteredNum.equalsIgnoreCase("done") && numOfNums < 5)
+			else if(enteredNum.equalsIgnoreCase("done") && numOfNums < 5){
 				System.out.println("Please enter at least 5 grades.");
+				continue;
+			}
 			
+			//If the user does not type either "done" or a number, call them out and continue
 			try {
 				grades.add(Double.parseDouble(enteredNum));
 				numOfNums++;
@@ -32,8 +35,12 @@ public class CentralTendency {
 		
 		input.close();
 		grades = sortList(grades);
-		System.out.println("The median is: " + findMedian(grades));
+		for(int i = 0; i < grades.size(); i++){
+			System.out.print(grades.get(i) + " ");
+		}
+		System.out.println("\nThe median is: " + findMedian(grades));
 		System.out.println("The mean is: " + findMean(grades));
+		
 		
 
 	}
@@ -68,11 +75,11 @@ public class CentralTendency {
 	private static double findMean(ArrayList<Double> a){
 		double mean = 0;
 		double sum = 0;
+		System.out.println(a.size());
 		for(int i = 0; i < a.size(); i++){
 			sum += a.get(i);
 		}
 		mean = sum / a.size();
-		
 		return mean;
 	}
 	
