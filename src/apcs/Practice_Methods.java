@@ -5,7 +5,7 @@ package apcs;
  *
  */
 public class Practice_Methods {
-
+	Die x  = new Die();
 	public static int sum100() {
 		int sum = 0;
 		for (int i = 1; i <= 100; i++) {
