@@ -16,12 +16,12 @@ public class PairOfDice {
 		faceValue1 = d1.roll();
 		faceValue2 = d2.roll();
 	}
-
-	public int getFaceValueDie1() {
-		return faceValue1;
+	
+	public int[] getFaceValue(){
+		return new int[] {faceValue1, faceValue2};
 	}
-
-	public int getFaceValueDie2() {
-		return faceValue2;
+	
+	public int getTotal(){
+		return faceValue1 + faceValue2;
 	}
 }
