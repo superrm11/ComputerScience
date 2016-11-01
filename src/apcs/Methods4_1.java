@@ -3,11 +3,7 @@ package apcs;
 public class Methods4_1 {
 
 	public static void main(String[] args) {
-		powersOfTwo();
-		alarm(2);
-		System.out.println(sum100());
-		System.out.println(maxOfTwo(5,8));
-		System.out.println(average(2,6));
+		System.out.println(removeOnesDigit(775));
 
 	}
 
@@ -58,5 +54,20 @@ public class Methods4_1 {
 	}
 	public static double average(int a, int b){
 		return (a + b) / 2.0;
+	}
+	
+	public static int findTensDigit(int i){
+		while(i > 99){
+			i-=100;
+			}
+		return i / 10;
+	     
+	}
+	
+	public static int removeOnesDigit(int input){
+		while(input % 10 != 0){
+			input--;
+		}
+		return input / 10;
 	}
 }
