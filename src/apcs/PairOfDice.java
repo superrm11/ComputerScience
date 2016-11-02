@@ -24,4 +24,8 @@ public class PairOfDice {
 	public int getTotal(){
 		return faceValue1 + faceValue2;
 	}
+	
+	public boolean hasOne(){
+		return(faceValue1 == 1 || faceValue2 == 1);
+	}
 }
