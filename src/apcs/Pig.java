@@ -2,11 +2,15 @@ package apcs;
 
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Ryan McGee
+ *
+ */
 public class Pig
 {
 	private static PairOfDice dice;
 	private static Players turn = Players.player;
-	private static boolean rollWas2 = false;
 	private static int roundTotal = 0;
 	private static int playerTotal = 0;
 	private static int computerTotal = 0;
@@ -15,13 +19,10 @@ public class Pig
 	{
 		Scanner input = new Scanner(System.in);
 		dice = new PairOfDice();
-		Players winner;
-		int points;
 		while (true)
 		{
 			if (playerTotal >= 100)
 			{
-				winner = Players.player;
 				System.out.println("Congrats, man! Would you like to play again?\ty/n");
 				if (input.nextLine().equalsIgnoreCase("y"))
 				{
@@ -33,7 +34,6 @@ public class Pig
 					break;
 			} else if (computerTotal >= 100)
 			{
-				winner = Players.computer;
 				System.out.println("Better luck next time! Would you like to play again\ty/n");
 				if (input.nextLine().equalsIgnoreCase("y"))
 				{
@@ -51,7 +51,6 @@ public class Pig
 				System.out.println("Player 1's turn!\nPress Enter to roll your dice.");
 				input.nextLine();
 				System.out.println("You rolled a " + dice.getFaceValue()[0] + " and a " + dice.getFaceValue()[1]);
-				points = dice.getTotal();
 				if (dice.getTotal() == 2)
 				{
 					System.out.println("Oh, no! you rolled 2 ones!");
@@ -80,7 +79,6 @@ public class Pig
 				Thread.sleep(200);
 				System.out.println("It's the computer's turn!\nThe computer rolled a " + dice.getFaceValue()[0]
 						+ " and a " + dice.getFaceValue()[1]);
-				points = dice.getTotal();
 				if (dice.getTotal() == 2)
 				{
 					System.out.println("Oh, no! The computer rolled 2 ones!");
@@ -107,6 +105,7 @@ public class Pig
 				break;
 			}
 		}
+		input.close();
 
 	}
 
@@ -127,7 +126,6 @@ public class Pig
 			computerTotal += roundTotal;
 		}
 		roundTotal = 0;
-		rollWas2 = false;
 		System.out.println("The score is: \nYou: " + playerTotal + "\nComputer: " + computerTotal);
 
 	}

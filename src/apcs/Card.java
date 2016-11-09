@@ -1,5 +1,10 @@
 package apcs;
 
+/**
+ * 
+ * @author Ryan McGee
+ *
+ */
 public class Card
 {
 	public enum Suit
@@ -33,7 +38,7 @@ public class Card
 		return faceValueInt;
 	}
 
- 	public void shuffle()
+	public void shuffle()
 	{
 		int i = (int) (Math.random() * 4);
 		switch (i)
