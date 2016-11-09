@@ -33,7 +33,7 @@ public class Card
 		return faceValueInt;
 	}
 
-	public void shuffle()
+ 	public void shuffle()
 	{
 		int i = (int) (Math.random() * 4);
 		switch (i)
@@ -54,28 +54,28 @@ public class Card
 			suit = Suit.undefined;
 		}
 
-		i = (int) (Math.random() * 14);
+		i = (int) (Math.random() * 13) + 1;
 		switch (i)
 		{
-		case 10:
+		case 11:
 			faceValue = FaceValue.jack;
 			faceValueInt = 0;
 			break;
-		case 11:
+		case 12:
 			faceValue = FaceValue.queen;
 			faceValueInt = 0;
 			break;
-		case 12:
+		case 13:
 			faceValue = FaceValue.king;
 			faceValueInt = 0;
 			break;
-		case 13:
+		case 1:
 			faceValue = FaceValue.ace;
 			faceValueInt = 0;
 			break;
 		default:
 			faceValue = FaceValue.number;
-			faceValueInt = i + 1;
+			faceValueInt = i;
 
 		}
 	}
