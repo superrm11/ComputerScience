@@ -17,6 +17,7 @@ public class Pig
 
 	public static void main(String[] args) throws InterruptedException
 	{
+		System.out.println("\tLet's play PIG!!!");
 		Scanner input = new Scanner(System.in);
 		dice = new PairOfDice();
 		while (true)
