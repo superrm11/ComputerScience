@@ -7,82 +7,57 @@ package apcs;
  */
 public class Card
 {
-	public enum Suit
+	public static final int JACK = 11;
+	public static final int QUEEN = 12;
+	public static final int KING = 13;
+	public static final int ACE = 1;
+
+	public static final int CLUBS = 0;
+	public static final int DIAMONDS = 1;
+	public static final int HEARTS = 2;
+	public static final int SPADES = 3;
+
+	public Card(int value, int suit)
 	{
-		hearts, diamonds, clubs, spades, undefined
+
 	}
 
-	private Suit suit = Suit.undefined;
+	private int suit;
 
-	public Suit getSuit()
+	public int getSuit()
 	{
 		return suit;
 	}
 
-	public enum FaceValue
-	{
-		jack, queen, king, ace, number, undefined
-	}
+	private int faceValue = 0;
 
-	private FaceValue faceValue = FaceValue.undefined;
-
-	private int faceValueInt = 0;
-
-	public FaceValue getFaceValue()
+	public int getFaceValue()
 	{
 		return faceValue;
 	}
 
-	public int getFaceValueInt()
+	public void setFaceValue(int i)
 	{
-		return faceValueInt;
+		faceValue = i;
 	}
 
-	public void shuffle()
+	public void setSuit(int i)
+	{
+		suit = i;
+	}
+
+	public void random()
 	{
 		int i = (int) (Math.random() * 4);
-		switch (i)
-		{
-		case 0:
-			suit = Suit.clubs;
-			break;
-		case 1:
-			suit = Suit.diamonds;
-			break;
-		case 2:
-			suit = Suit.hearts;
-			break;
-		case 3:
-			suit = Suit.spades;
-			break;
-		default:
-			suit = Suit.undefined;
-		}
+		setSuit(i);
 
 		i = (int) (Math.random() * 13) + 1;
-		switch (i)
-		{
-		case 11:
-			faceValue = FaceValue.jack;
-			faceValueInt = 0;
-			break;
-		case 12:
-			faceValue = FaceValue.queen;
-			faceValueInt = 0;
-			break;
-		case 13:
-			faceValue = FaceValue.king;
-			faceValueInt = 0;
-			break;
-		case 1:
-			faceValue = FaceValue.ace;
-			faceValueInt = 0;
-			break;
-		default:
-			faceValue = FaceValue.number;
-			faceValueInt = i;
-
-		}
+		setFaceValue(i);
+	}
+	
+	public String toString()
+	{
+		String
 	}
 
 }
