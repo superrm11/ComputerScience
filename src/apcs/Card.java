@@ -57,7 +57,7 @@ public class Card
 	
 	public String toString()
 	{
-		String
+		return new String();
 	}
 
 }
