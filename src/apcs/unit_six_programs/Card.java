@@ -1,4 +1,4 @@
-package apcs;
+package apcs.unit_six_programs;
 
 /**
  * 
@@ -39,12 +39,27 @@ public class Card
 	public void setFaceValue(int i)
 	{
 		faceValue = i;
+		
+		if(faceValue == JACK)
+			faceValueName = "Jack";
+		else if(faceValue == QUEEN)
+			faceValueName = "Queen";
+		else if(faceValue == KING)
+			faceValueName = "King";
+		else if(faceValue == ACE)
+			faceValueName = "ace";
+		else
+			faceValueName = String.valueOf(i);
 	}
 
 	public void setSuit(int i)
 	{
 		suit = i;
+		
+		
 	}
+	
+	String faceValueName;
 
 	public void random()
 	{
@@ -57,7 +72,8 @@ public class Card
 	
 	public String toString()
 	{
-		return new String();
+		
+		if(faceValue == JACK)
 	}
 
 }

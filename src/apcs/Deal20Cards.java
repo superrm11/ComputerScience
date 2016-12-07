@@ -1,5 +1,7 @@
 package apcs;
 
+import apcs.unit_six_programs.Card;
+
 /**
  * 
  * @author Ryan McGee
@@ -15,7 +17,7 @@ public class Deal20Cards
 		{
 			c[i] = new Card();
 			c[i].shuffle();
-			if (c[i].getFaceValue() == Card.FaceValue.number)
+			if (c[i].getFaceValue() == apcs.unit_six_programs.FaceValue.number)
 			{
 				System.out.println(i + 1 + "] You drew a " + c[i].getFaceValueInt() + " of " + c[i].getSuit());
 			} else
