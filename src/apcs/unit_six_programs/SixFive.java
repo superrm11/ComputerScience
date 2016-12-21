@@ -14,6 +14,7 @@ public class SixFive
 		Scanner input = new Scanner(System.in);
 		int[] numbers = new int[10];
 		int k = 0;
+		System.out.println("Please enter numbers between 1 and 100 inclusive \nType a number outside the range to continue.");
 		while (true)
 		{
 			k = input.nextInt();

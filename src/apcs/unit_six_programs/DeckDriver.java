@@ -7,14 +7,8 @@ public class DeckDriver
 	{
 		Deck d = new Deck();
 		d.shuffle();
-		while(true)
-		{
-			Card c = d.dealCard();
-			if(c == null)
-				break;
-			else
-				System.out.println(c);
-		}
+		Card c = d.dealCard();
+		System.out.println(c);
 		
 	}
 

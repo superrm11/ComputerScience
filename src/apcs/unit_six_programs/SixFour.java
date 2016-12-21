@@ -14,6 +14,7 @@ public class SixFour
 		Scanner input = new Scanner(System.in);
 		int[] numbers = new int[10];
 		int k = 0;
+		System.out.println("Please enter numbers between 1 and 100 inclusive \nType a number outside the range to continue.");
 		while (true)
 		{
 			k = input.nextInt();
@@ -24,7 +25,7 @@ public class SixFour
 		}
 		for (int j = 0; j < 10; j++)
 		{
-			System.out.print("| " + ((j * 10) + 1) + "-" + ((j * 10) + 10) + " |");
+			System.out.print("|" + ((j * 10) + 1) + "-" + ((j * 10) + 10) + "\t|");
 			for (int i = 0; i < numbers[j]; i++)
 				System.out.print("*");
 			System.out.println("");
