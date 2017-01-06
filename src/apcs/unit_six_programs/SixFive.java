@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Ryan McGee
  *
  */
-public class SixFour
+public class SixFive
 {
 
 	public static void main(String[] args)
@@ -25,8 +25,8 @@ public class SixFour
 		}
 		for (int j = 0; j < 10; j++)
 		{
-			System.out.print("|" + ((j * 10) + 1) + "-" + ((j * 10) + 10) + "\t|");
-			for (int i = 0; i < numbers[j]; i++)
+			System.out.print("| " + ((j * 10) + 1) + "-" + ((j * 10) + 10) + " |");
+			for (int i = 0; i < numbers[j] / 5; i++)
 				System.out.print("*");
 			System.out.println("");
 		}

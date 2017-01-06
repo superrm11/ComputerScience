@@ -1,4 +1,4 @@
-package apcs;
+package apcs.unit_six_programs;
 
 /**
  * 
@@ -19,7 +19,14 @@ public class Card
 
 	public Card(int value, int suit)
 	{
-
+		this.setFaceValue(value);
+		this.setSuit(suit);
+	}
+	
+	public Card(Card old)
+	{
+		this.setFaceValue(old.getFaceValue());
+		this.setSuit(old.getSuit());
 	}
 
 	private int suit;
@@ -39,12 +46,37 @@ public class Card
 	public void setFaceValue(int i)
 	{
 		faceValue = i;
+		
+		if(faceValue == JACK)
+			faceValueName = "Jack";
+		else if(faceValue == QUEEN)
+			faceValueName = "Queen";
+		else if(faceValue == KING)
+			faceValueName = "King";
+		else if(faceValue == ACE)
+			faceValueName = "Ace";
+		else
+			faceValueName = String.valueOf(i);
 	}
 
 	public void setSuit(int i)
 	{
 		suit = i;
+		
+		if(suit == CLUBS)
+			suitName = "Clubs";
+		else if(suit == SPADES)
+			suitName = "Spades";
+		else if(suit == DIAMONDS)
+			suitName = "Diamonds";
+		else if(suit == HEARTS)
+			suitName = "Hearts";
+		
 	}
+	
+	String faceValueName;
+	
+	String suitName;
 
 	public void random()
 	{
@@ -57,7 +89,8 @@ public class Card
 	
 	public String toString()
 	{
-		return new String();
+		
+		return new String(faceValueName + " of " + suitName);
 	}
 
 }
