@@ -32,8 +32,13 @@ public class GoFish
 					playerHand = d.dealCard(5);
 				}
 				playerPairs += findPairs(playerHand);
-				System.out.println("It is your turn! Here are your cards...\n" + handValue(playerHand)
-						+ "\n What would you like to ask Player 2 for?");
+				
+				System.out.println(playerHand);
+				System.out.println(playerHand.size());
+				System.exit(0);
+				
+				System.out.println("It is your turn! Here are your cards...\n" + playerHand + "You have " + playerPairs
+						+ " pair(s)!" + "\n What would you like to ask Player 2 for?");
 				int cardIndex = input.nextInt();
 
 				int numOfCardsRecieved = askFor(cardIndex, Turn.player);
@@ -44,7 +49,7 @@ public class GoFish
 					turn = Turn.computer;
 					break;
 				}
-				
+
 			case computer:
 
 			}
@@ -63,19 +68,30 @@ public class GoFish
 
 	private static int findPairs(ArrayList<Card> hand)
 	{
+		ArrayList<Card> newHand = new ArrayList<Card>();
 		int pairs = 0;
 		for (int i = 0; i < hand.size(); i++)
 		{
-			for (int k = i; k >= 0; k--)
+			for (int k = 0; k < i; k++)
 			{
-				if (hand.get(i).getFaceValue() == hand.get(k).getFaceValue())
+				if (hand.get(i) != null && hand.get(k) != null
+						&& hand.get(i).getFaceValue() == hand.get(k).getFaceValue())
 				{
-					hand.remove(i);
-					hand.remove(k);
+					hand.set(i, new Card(Card.UNREGISTERED, Card.UNREGISTERED));
+					hand.set(k, new Card(Card.UNREGISTERED, Card.UNREGISTERED));
 					pairs++;
 				}
 			}
 		}
+
+		for (int i = 0; i < hand.size(); i++)
+		{
+			if (hand.get(i) != null && hand.get(i).getFaceValue() != Card.UNREGISTERED)
+				newHand.add(hand.get(i));
+		}
+		hand = newHand;
+		System.out.println(hand);
+		System.out.println(hand.size());
 		return pairs;
 	}
 

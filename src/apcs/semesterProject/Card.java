@@ -16,6 +16,8 @@ public class Card
 	public static final int DIAMONDS = 1;
 	public static final int HEARTS = 2;
 	public static final int SPADES = 3;
+	
+	public static final int UNREGISTERED = -1;
 
 	public Card(int value, int suit)
 	{
@@ -55,6 +57,8 @@ public class Card
 			faceValueName = "King";
 		else if(faceValue == ACE)
 			faceValueName = "Ace";
+		else if(faceValue == UNREGISTERED)
+			faceValueName = "Unregistered";
 		else
 			faceValueName = String.valueOf(i);
 	}
@@ -71,6 +75,8 @@ public class Card
 			suitName = "Diamonds";
 		else if(suit == HEARTS)
 			suitName = "Hearts";
+		else
+			suitName = "Unregistered";
 		
 	}
 	
