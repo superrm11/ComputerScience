@@ -6,9 +6,10 @@ public class DeckDriver
 	public static void main(String[] args)
 	{
 		Deck d = new Deck();
-		d.shuffle();
-		Card c = d.dealCard();
-		System.out.println(c);
+		for(int i = 0; i < 52; i++)
+		{
+			System.out.println(d.dealCard());
+		}
 		
 	}
 
