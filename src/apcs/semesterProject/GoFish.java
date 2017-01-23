@@ -8,7 +8,7 @@ public class GoFish
 {
 	private static ArrayList<Card> playerHand;
 	private static ArrayList<Card> computerHand;
-	
+
 	private static Deck d;
 
 	public static void main(String[] args)
@@ -23,30 +23,48 @@ public class GoFish
 
 		int playerPairs = 0;
 		int computerPairs = 0;
+		int cardIndex = 0;
 
 		while (true)
 		{
 			switch (turn)
 			{
 			case player:
+
+				playerPairs += findPairs(Turn.player);
+
+				System.out.println("It is your turn! Here are your cards...\n" + handValue(playerHand) + "You have "
+						+ playerPairs + " pair(s)!" + "\n What would you like to ask the Computer for?");
+				cardIndex = input.nextInt();
+
+				playerPairs += askFor(cardIndex, Turn.player);
+
 				if (playerHand.size() == 0)
 				{
 					System.out.println("You have no cards! Drawing 5 more...");
 					playerHand = d.dealCard(5);
 				}
 
-				playerPairs += findPairs(Turn.player);
-
-				System.out.println("It is your turn! Here are your cards...\n" + handValue(playerHand) + "You have " + playerPairs
-						+ " pair(s)!" + "\n What would you like to ask Player 2 for?");
-				int cardIndex = input.nextInt();
-
-				playerPairs += askFor(cardIndex, Turn.player);
-				
 				break;
 
 			case computer:
 
+				computerPairs += findPairs(Turn.computer);
+
+				System.out.println("It is the computer's turn!");
+				cardIndex = (int) Math.random() * computerHand.size();
+				System.out.println("The computer has " + computerPairs + " pair(s)!");
+				System.out.println("The computer asked for a " + computerHand.get(cardIndex));
+
+				computerPairs += askFor(cardIndex, Turn.computer);
+
+				if (computerHand.size() == 0)
+				{
+					System.out.println("The computer has no cards! Drawing 5 more...");
+					computerHand = d.dealCard(5);
+				}
+				System.out.println("");
+				break;
 			}
 		}
 	}
@@ -132,23 +150,30 @@ public class GoFish
 					return 1;
 				}
 			}
-			
+
 			System.out.println("The computer does not have that card! Go Fish!");
 			playerHand.add(d.dealCard());
-			if(playerHand.get(cardIndex).getFaceValue() == playerHand.get(playerHand.size() - 1).getFaceValue())
+			if (playerHand.get(cardIndex).getFaceValue() == playerHand.get(playerHand.size() - 1).getFaceValue())
 				System.out.println("But you got that card anyways! Sweet!");
-			turn = Turn.computer;
+			System.out.println("");
+			GoFish.turn = Turn.computer;
 			return 0;
 		case computer:
-			for (int i = playerHand.size() - 1; i >= 0; i++)
+			for (int i = playerHand.size() - 1; i >= 0; i--)
 			{
 				if (playerHand.get(i).getFaceValue() == computerHand.get(cardIndex).getFaceValue())
 				{
+					System.out.println("The computer took your " + playerHand.get(i));
 					playerHand.remove(i);
-					count++;
+					playerHand.remove(cardIndex);
+					return 1;
 				}
 			}
-			break;
+
+			System.out.println("The Player does not have that card! Go Fish!");
+			computerHand.add(d.dealCard());
+			GoFish.turn = Turn.player;
+			return 0;
 		}
 		return count;
 	}
