@@ -52,7 +52,7 @@ public class Deck
 		if (this.chosenCardIndex <= 51)
 			return this.deck[chosenCardIndex++];
 		else
-			return null;
+			return new Card(Card.UNREGISTERED, Card.UNREGISTERED);
 	}
 	
 	public ArrayList<Card> dealCard(int numOfCards)

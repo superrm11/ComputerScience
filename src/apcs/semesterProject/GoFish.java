@@ -52,7 +52,9 @@ public class GoFish
 				computerPairs += findPairs(Turn.computer);
 
 				System.out.println("It is the computer's turn!");
-				cardIndex = (int) Math.random() * computerHand.size();
+				cardIndex = (int) (Math.random() * computerHand.size());
+				System.out.println(computerHand.size());
+				System.out.println("Card Index: " + cardIndex);
 				System.out.println("The computer has " + computerPairs + " pair(s)!");
 				System.out.println("The computer asked for a " + computerHand.get(cardIndex));
 
