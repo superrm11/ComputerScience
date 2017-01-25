@@ -17,7 +17,9 @@ public class Card
 	public static final int HEARTS = 2;
 	public static final int SPADES = 3;
 	
-	public static final int UNREGISTERED = -1;
+	public static final int UNREGISTERED = 14;
+	
+	private static int unregisteredIndex = 15;
 
 	public Card(int value, int suit)
 	{
@@ -42,6 +44,8 @@ public class Card
 
 	public int getFaceValue()
 	{
+		if(faceValue == UNREGISTERED)
+			return this.unregisteredIndex++;
 		return faceValue;
 	}
 

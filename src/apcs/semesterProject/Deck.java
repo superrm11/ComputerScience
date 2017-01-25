@@ -49,7 +49,7 @@ public class Deck
 	 */
 	public Card dealCard()
 	{
-		if (this.chosenCardIndex <= 51)
+		if (this.getCardsLeft() <= 52)
 			return this.deck[chosenCardIndex++];
 		else
 			return new Card(Card.UNREGISTERED, Card.UNREGISTERED);
@@ -58,6 +58,8 @@ public class Deck
 	public ArrayList<Card> dealCard(int numOfCards)
 	{
 		ArrayList<Card> hand = new ArrayList<Card>();
+		if(numOfCards > this.getCardsLeft())
+			numOfCards = this.getCardsLeft();
 		for(int i = 0; i < numOfCards; i++)
 		{
 			hand.add(this.deck[this.chosenCardIndex++]);
