@@ -3,7 +3,10 @@ package gridWorld;
 import java.awt.Color;
 
 import info.gridworld.actor.Actor;
+import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Bug;
+import info.gridworld.actor.Flower;
+import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
@@ -37,9 +40,24 @@ public class Jumper extends Bug
 		}
 		// If the actor in the location we would jump to is not empty, move
 		// once and return.
-		else if (this.getGrid().isValid(jumpLoc) && this.getGrid().get(jumpLoc) != null)
+		else if ((!this.getGrid().isValid(jumpLoc)
+				&& this.getGrid().get(getLocation().getAdjacentLocation(getDirection())) == null)
+				|| (this.getGrid().isValid(jumpLoc) && (this.getGrid().get(jumpLoc) instanceof Flower
+						|| this.getGrid().get(jumpLoc) instanceof Rock)))
 		{
 			this.move();
+			return;
+		} else if (this.getGrid().isValid(jumpLoc) && this.getGrid().get(jumpLoc) instanceof Jumper)
+		{
+			this.jump();
+			return;
+		} else if (this.getGrid().isValid(jumpLoc) && this.getGrid().get(jumpLoc) == null)
+		{
+			this.jump();
+			return;
+		} else
+		{
+			turn();
 			return;
 		}
 	}
@@ -50,7 +68,14 @@ public class Jumper extends Bug
 	@Override
 	public void move()
 	{
-
+		Grid<Actor> gr = getGrid();
+		if (gr == null)
+			return;
+		Location next = this.getLocation().getAdjacentLocation(this.getDirection());
+		if (gr.isValid(next))
+			moveTo(next);
+		else
+			removeSelfFromGrid();
 	}
 
 	public void jump()
@@ -64,6 +89,16 @@ public class Jumper extends Bug
 			moveTo(next);
 		else
 			removeSelfFromGrid();
+	}
+
+	public static void main(String[] args)
+	{
+		ActorWorld world = new ActorWorld();
+		Jumper bug = new Jumper();
+		world.add(bug);
+		world.add(new Rock());
+		world.add(new Rock());
+		world.show();
 	}
 
 }
