@@ -9,6 +9,7 @@ import info.gridworld.grid.Location;
 
 public class BlusterCritter extends Critter
 {
+
 	private final int C;
 
 	public BlusterCritter(int c)
@@ -19,16 +20,11 @@ public class BlusterCritter extends Critter
 	@Override
 	public ArrayList<Actor> getActors()
 	{
-		Location[] validLocations = new Location[16];
-		int tempDirection = 0;
-		Location currentLoc = this.getLocation().getAdjacentLocation(0).getAdjacentLocation(0).getAdjacentLocation(270)
-				.getAdjacentLocation(270);
-		ArrayList<Actor> actors = this.getActors();
-		for (int i = 0; i < validLocations.length; i++)
-		{
-			validLocations[i] = (this.getGrid().isValid(currentLoc)) ? currentLoc : null;
-			currentLoc = currentLoc.getAdjacentLocation(tempDirection += 90);
-		}
+		ArrayList<Actor> actors = new ArrayList<Actor>();
+		Location currentLocation = this.getLocation();
+		
+		
+		
 		return actors;
 
 	}
