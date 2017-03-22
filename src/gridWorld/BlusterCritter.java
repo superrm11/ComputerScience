@@ -1,5 +1,6 @@
 package gridWorld;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import info.gridworld.actor.Actor;
@@ -22,18 +23,42 @@ public class BlusterCritter extends Critter
 	{
 		ArrayList<Actor> actors = new ArrayList<Actor>();
 		Location currentLocation = this.getLocation();
-		
-		
-		
+
+		for (int i = currentLocation.getRow() - 2; i <= currentLocation.getRow() + 2; i++)
+			for (int k = currentLocation.getCol() - 2; k <= currentLocation.getCol() + 2; k++)
+			{
+				Location newLoc = new Location(i, k);
+				if (newLoc.compareTo(currentLocation) != 0 && this.getGrid().isValid(newLoc)
+						&& this.getGrid().get(newLoc) != null && this.getGrid().get(newLoc) instanceof Actor)
+					actors.add(this.getGrid().get(newLoc));
+			}
 		return actors;
 
 	}
 
+	private double DARKENING_FACTOR = .05;
+
 	@Override
 	public void act()
 	{
-		for (Actor a : this.getActors())
-			a.removeSelfFromGrid();
+		if (this.getActors().size() > this.C)
+		{
+			Color c = getColor();
+			int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
+			int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
+			int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
+
+			setColor(new Color(red, green, blue));
+
+		} else if (this.getActors().size() < this.C)
+		{
+			Color c = getColor();
+			int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
+			int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
+			int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
+
+			setColor(new Color(red, green, blue));
+		}
 	}
 
 	public static void main(String[] args)
