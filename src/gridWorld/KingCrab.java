@@ -17,12 +17,22 @@ public class KingCrab extends CrabCritter
 		for(Actor a : actors)
 		{
 			Location loc = a.getLocation();
-			if(this.getGrid().get(loc) != null && this.getGrid().get(loc) instanceof Actor)
-			{
-				this.getGrid().get(loc).moveTo((loc.getCol() == this.getLocation().getCol()) ? new Location(this.getLocation().getRow() - 1, this.getLocation().getCol()) : (loc.getCol() < this.getLocation().getCol())? new Location(this.getLocation().getRow() - 1, this.getLocation().getCol() - 1) : new Location(this.getLocation().getRow() - 1, this.getLocation().getCol() + 1));
-			}
+			Location newLoc;
+			if(loc.getCol() < this.getLocation().getCol())
+				newLoc = new Location(loc.getRow() - 1, loc.getCol() - 1);
+			else if(loc.getCol() == this.getLocation().getCol())
+				newLoc = new Location(loc.getRow() - 1, loc.getCol());
+			else
+				newLoc = new Location(loc.getRow() - 1, loc.getCol() + 1);
+			
+			if(this.getGrid().isValid(newLoc) && this.getGrid().get(newLoc) == null)
+				a.moveTo(newLoc);
+			else
+				a.removeSelfFromGrid();
+				
 		}
 		
+		super.act();
 	}
 	
 	
