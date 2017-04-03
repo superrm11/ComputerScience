@@ -20,6 +20,7 @@ public class EatRockCritter extends Critter
 	
 	public void processActors(ArrayList<Actor> actors)
 	{
+		
 		for(Actor a : actors)
 		{
 			if(a instanceof Rock)
@@ -28,12 +29,13 @@ public class EatRockCritter extends Critter
 				numOfRocks++;
 			}
 		}
+		if(numOfRocks >= 10)
+			this.setColor(Color.WHITE);
 	}
 	
 	public Location selectMoveLocation(ArrayList<Location> locs)
 	{
-		return null;
-		
+		return (Math.random() * 100 > this.numOfRocks * 5) ? super.selectMoveLocation(locs) : this.getLocation();
 	}
 	
 
