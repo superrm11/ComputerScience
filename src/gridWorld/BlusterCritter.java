@@ -36,7 +36,7 @@ public class BlusterCritter extends Critter
 
 	}
 
-	private double DARKENING_FACTOR = .05;
+	private double DARKENING_FACTOR = .1;
 
 	@Override
 	public void act()
@@ -59,12 +59,15 @@ public class BlusterCritter extends Critter
 
 			setColor(new Color(red, green, blue));
 		}
+		super.act();
 	}
 
 	public static void main(String[] args)
 	{
 		ActorWorld world = new ActorWorld();
 		world.add(new BlusterCritter(0));
+		for(int i = 0; i < 10; i++)
+			world.add(new Actor());
 		world.show();
 	}
 
