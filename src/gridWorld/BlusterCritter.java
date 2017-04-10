@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Critter;
+import info.gridworld.actor.Rock;
 import info.gridworld.grid.Location;
 
 public class BlusterCritter extends Critter
@@ -36,12 +37,12 @@ public class BlusterCritter extends Critter
 
 	}
 
-	private double DARKENING_FACTOR = .1;
+	private double DARKENING_FACTOR = .15;
 
 	@Override
-	public void act()
+	public void processActors(ArrayList<Actor> actors)
 	{
-		if (this.getActors().size() > this.C)
+		if (actors.size() > this.C)
 		{
 			Color c = getColor();
 			int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
@@ -50,24 +51,30 @@ public class BlusterCritter extends Critter
 
 			setColor(new Color(red, green, blue));
 
-		} else if (this.getActors().size() < this.C)
+		} else if (actors.size() < this.C)
 		{
 			Color c = getColor();
-			int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
-			int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
-			int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
+			int red = c.getRed(), green = c.getGreen(), blue = c.getBlue();
+			red = (int) (c.getRed() * (1 + DARKENING_FACTOR));
+			green = (int) (c.getGreen() * (1 + DARKENING_FACTOR));
+			blue = (int) (c.getBlue() * (1 + DARKENING_FACTOR));
+			if (red > 255)
+				red = 255;
+			if (green > 255)
+				green = 255;
+			if (blue > 255)
+				blue = 255;
 
 			setColor(new Color(red, green, blue));
 		}
-		super.act();
 	}
 
 	public static void main(String[] args)
 	{
 		ActorWorld world = new ActorWorld();
-		world.add(new BlusterCritter(0));
-		for(int i = 0; i < 10; i++)
-			world.add(new Actor());
+		world.add(new BlusterCritter(3));
+		for (int i = 0; i < 10; i++)
+			world.add(new Rock());
 		world.show();
 	}
 

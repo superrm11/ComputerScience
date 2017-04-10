@@ -4,19 +4,12 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import info.gridworld.actor.Actor;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Rock;
 
 public class ChameleonKid extends ChameleonCritter
 {
 
-	public ChameleonKid()
-	{
-		super();
-	}
-
-	/**
-	 * Randomly selects a neighbor and changes this critter's color to be the
-	 * same as that neighbor's. If there are no neighbors, no action is taken.
-	 */
 	public void processActors(ArrayList<Actor> actors)
 	{
 		int n = actors.size();
@@ -36,6 +29,16 @@ public class ChameleonKid extends ChameleonCritter
 		if (other.getLocation().equals(this.getLocation().getAdjacentLocation(this.getDirection()))
 				|| other.getLocation().equals(this.getLocation().getAdjacentLocation(this.getDirection())))
 			setColor(other.getColor());
+	}
+
+	public static void main(String[] args)
+	{
+		ActorWorld world = new ActorWorld();
+		world.add(new ChameleonKid());
+		world.add(new Rock(Color.blue));
+		world.add(new Rock(Color.red));
+		world.add(new Rock(Color.green));
+		world.show();
 	}
 
 }

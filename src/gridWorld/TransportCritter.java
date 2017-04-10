@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Critter;
+import info.gridworld.actor.Flower;
 import info.gridworld.grid.Location;
 
 public class TransportCritter extends Critter
@@ -54,6 +55,15 @@ public class TransportCritter extends Critter
 	public Location selectMoveLocation(ArrayList<Location> locs)
 	{
 		return (isRandom) ? locs.get((int) (Math.random() * locs.size())) : super.selectMoveLocation(locs);
+	}
+
+	@Override
+	public void makeMove(Location l)
+	{
+		Location currentLocation = new Location(this.getLocation().getRow(), this.getLocation().getCol());
+		super.makeMove(l);
+		if (this.isRandom)
+			(new Flower(this.getColor())).putSelfInGrid(this.getGrid(), currentLocation);
 	}
 
 	public static void main(String[] args)
